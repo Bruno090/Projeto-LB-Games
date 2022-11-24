@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
         //checando se o iniciar foi cliclad
     }
 
+    //Mudar da tela de inicio do jogo, para a tela do jogo
     public void IniciaJogo()
     {
         //Ir para a cena do jogo

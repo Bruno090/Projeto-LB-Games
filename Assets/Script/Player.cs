@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+    // ficar chamando os metodos todos os segundos 
     void Update()
     {
         andar();
@@ -30,22 +30,23 @@ public class Player : MonoBehaviour
 
     void andar()
     {
+        //funções para fazer o personagem andar ao se apertar o botão para movimento
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"),0f,0f);
         transform.position += movement * Time.deltaTime * Veloc;
 
-
+        //Animação da ação correndo 
         if(Input.GetAxis("Horizontal") > 0f)
         {
         anim.SetBool("Run",true);
         transform.eulerAngles = new Vector3(0f,0f,0f);
         }
-
+        //Animação correndo, mas para o outro lado 
         if(Input.GetAxis("Horizontal")< 0f)
         {
             anim.SetBool("Run", true);
             transform.eulerAngles = new Vector3(0f,180f,0f);
         }
-
+        //parar a animação quando o personagem parar de andar/correr
         if(Input.GetAxis("Horizontal")== 0f)
         {
             anim.SetBool("Run", false);
@@ -55,8 +56,10 @@ public class Player : MonoBehaviour
 
     void pular()
     {
+        //Fazer o personagem pular quando o botão 'pular' for pressionado 
         if(Input.GetButtonDown("Jump"))
         {
+            //codigo de ação para fazer o personagem pular duas vezes
             if(!estaPulando)
             {
             rig.AddForce(new Vector2(0f,forcaPulo), ForceMode2D.Impulse);
@@ -73,7 +76,7 @@ public class Player : MonoBehaviour
         }
     }
 
-   
+//Mostar tela de fim de jogo caso jogador enconste no obstaculo lança
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.layer == 8)
@@ -89,6 +92,7 @@ public class Player : MonoBehaviour
     }
 
    
+    //Desativar o pulo duplo caso personagem enconste no chão 
     void OnCollisionExit2D(Collision2D collision)
     {
         if(collision.gameObject.layer == 8)

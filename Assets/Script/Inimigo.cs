@@ -27,7 +27,7 @@ public class Inimigo : MonoBehaviour
 
     void Update()
     {
-        
+        //Fazer o inimigo se movimentar por uma area determinada
         rig.velocity = new Vector2(Veloc, rig.velocity.y);
 
         colidindo = Physics2D.Linecast(direitaCol.position,esquerdaCol.position, layer);
@@ -40,11 +40,13 @@ public class Inimigo : MonoBehaviour
     }
 
     bool playerDestroyed = false;
+    // Fazer o personagem morrer ao enconstar no personagem 
     void OnCollisionEnter2D(Collision2D col)
     {
         
         if(col.gameObject.tag == "Player")
         {
+            //Se o personagem enconstar na cabeça do inimigo, ele morrerá 
             float height = col.contacts[0].point.y - PontoCabeca.position.y;
 
             if(height > 0 && !playerDestroyed)
@@ -55,6 +57,7 @@ public class Inimigo : MonoBehaviour
             }
             else
             {
+                //Caso o inimigo enconste nele sem ser na cabeça, o persoangem morrerá 
                 playerDestroyed = true;
                 GameController.instance.ShowGameOver();
                 Destroy(col.gameObject);
