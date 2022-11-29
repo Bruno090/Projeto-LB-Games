@@ -30,24 +30,31 @@ public class Player : MonoBehaviour
 
     void andar()
     {
-        //funções para fazer o personagem andar ao se apertar o botão para movimento
+        /*antiga funções para fazer o personagem andar ao se apertar o botão para movimento
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"),0f,0f);
-        transform.position += movement * Time.deltaTime * Veloc;
+
+        Move o personagem em um posição
+        transform.position += movement * Time.deltaTime * Veloc;*/
+
+        // Nova funções para fazer o personagem andar ao se apertar o botão para movimento
+        float movement = Input.GetAxis("Horizontal");
+
+        rig.velocity = new Vector2(movement * Veloc, rig.velocity.y);
 
         //Animação da ação correndo 
-        if(Input.GetAxis("Horizontal") > 0f)
+        if(movement > 0f)
         {
         anim.SetBool("Run",true);
         transform.eulerAngles = new Vector3(0f,0f,0f);
         }
         //Animação correndo, mas para o outro lado 
-        if(Input.GetAxis("Horizontal")< 0f)
+        if(movement < 0f)
         {
             anim.SetBool("Run", true);
             transform.eulerAngles = new Vector3(0f,180f,0f);
         }
         //parar a animação quando o personagem parar de andar/correr
-        if(Input.GetAxis("Horizontal")== 0f)
+        if(movement == 0f)
         {
             anim.SetBool("Run", false);
         }
