@@ -134,7 +134,8 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 'Beta - 0.02.1 - Troca de cor da terra '
+  bundleVersion: Beta - 0.0.3 - Aumento de mapa/Melhoria de fisica/menu pausa e sair
+    do jogo.
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
