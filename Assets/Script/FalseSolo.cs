@@ -9,7 +9,6 @@ public class FalseSolo : MonoBehaviour
 
     private TargetJoint2D target;
     private BoxCollider2D boxColl;
-    // Start is called before the first frame update
     void Start()
     {
         target = GetComponent<TargetJoint2D>();
